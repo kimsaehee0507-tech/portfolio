@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sehee's MacBook Portfolio</title>
     <style>
-        /* 기본 스타일 리셋 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             width: 100vw; height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow: hidden; position: relative;
         }
-
-        /* [1] 맥북 잠금 화면 (Lock Screen) */
         #lock-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
@@ -39,7 +36,6 @@
         .password-container input::placeholder { color: rgba(255, 255, 255, 0.5); }
         .login-btn { background: none; border: none; color: white; cursor: pointer; font-size: 16px; margin-left: 5px; }
 
-        /* [2] 메인 바탕화면 (Desktop) */
         #desktop {
             width: 100%; height: 100%;
             background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
@@ -52,7 +48,6 @@
         }
         .menu-left span, .menu-right span { margin-right: 15px; cursor: pointer; }
 
-        /* 바탕화면 왼쪽 세로 정렬 아이콘 그리드 */
         .file-grid { position: absolute; top: 55px; left: 25px; display: flex; flex-direction: column; gap: 25px; }
         .desktop-icon { display: flex; flex-direction: column; align-items: center; width: 115px; cursor: pointer; text-align: center; }
         .desktop-icon .icon-img { font-size: 52px; margin-bottom: 6px; filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.25)); transition: transform 0.15s ease; }
@@ -62,7 +57,6 @@
             background: rgba(0, 0, 0, 0.4); padding: 3px 6px; border-radius: 5px; font-weight: 500; word-break: keep-all;
         }
 
-        /* 하단 독바 */
         .dock-container { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 999; }
         .dock {
             background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(25px); padding: 10px 18px; border-radius: 22px; display: flex; gap: 18px;
@@ -75,7 +69,6 @@
         }
         .dock-item:hover { transform: scale(1.25) translateY(-10px); }
 
-        /* 프로그램 모달 창 */
         .window {
             width: 680px; height: 540px; background: #fff; border-radius: 11px;
             box-shadow: 0 25px 55px rgba(0,0,0,0.35); position: absolute; top: 50%; left: 50%;
@@ -91,7 +84,6 @@
         .btn-maximize { background: #27c93f; }
         .window-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 13px; color: #4b5563; font-weight: 600; }
 
-        /* 내부 레이아웃 */
         .content { flex: 1; padding: 25px; overflow-y: auto; font-size: 14px; line-height: 1.7; color: #1f2937; }
         .content h3 { margin-bottom: 15px; color: #111827; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px;}
         .info-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
@@ -104,7 +96,6 @@
         .web-link-container { text-align: center; margin-top: 25px; }
         .btn-visit { display: inline-block; background: #2563eb; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; }
 
-        /* 🛍️ 겐츠 굿즈 뷰어 전용 레이아웃 */
         .pdf-viewer { display: flex; flex-direction: column; height: 100%; }
         .pdf-navigation { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; background: #f3f4f6; padding: 8px; border-radius: 6px; }
         .pdf-btn { background: white; border: 1px solid #d1d5db; padding: 5px 15px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
@@ -117,7 +108,6 @@
 </head>
 <body>
 
-    <!-- 🔒 잠금 화면 -->
     <div id="lock-screen">
         <div class="profile-img">👩‍💻</div>
         <div class="user-name">Sehee Kim</div>
@@ -128,7 +118,6 @@
         </div>
     </div>
 
-    <!-- 🖥️ 메인 바탕화면 -->
     <div id="desktop">
         <div class="menu-bar">
             <div class="menu-left">
@@ -143,7 +132,6 @@
             </div>
         </div>
 
-        <!-- 바탕화면 왼쪽 아이콘 배열 (네 번째 이름 '거제_카페추천웹'으로 전면 수정 완료) -->
         <div class="file-grid">
             <div class="desktop-icon" onclick="openWindow('window-nursery')">
                 <div class="icon-img">🎬</div>
@@ -159,11 +147,10 @@
             </div>
             <div class="desktop-icon" onclick="openWindow('window-geoje')">
                 <div class="icon-img">🌐</div>
-                <div class="icon-name">거제_카페추천웹.web</div>
+                <div class="icon-name">거제_카페추천웹</div>
             </div>
         </div>
 
-        <!-- 하단 독바 -->
         <div class="dock-container">
             <div class="dock">
                 <div class="dock-item" onclick="openWindow('window-profile')">👤</div>
@@ -173,7 +160,6 @@
         </div>
     </div>
 
-    <!-- 📑 [독바 1] 내 정보 -->
     <div id="window-profile" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-profile')"></div></div>
@@ -198,7 +184,6 @@
         </div>
     </div>
 
-    <!-- 📑 [독바 2] Work_Archive 요약 목록 -->
     <div id="window-archive" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-archive')"></div></div>
@@ -215,7 +200,6 @@
         </div>
     </div>
 
-    <!-- 📑 [독바 3] 연락처 -->
     <div id="window-contact" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-contact')"></div></div>
@@ -230,7 +214,6 @@
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 1] 외도널서리 -->
     <div id="window-nursery" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-nursery')"></div></div>
@@ -245,7 +228,6 @@
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 2] 온더선셋 -->
     <div id="window-sunset" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-sunset')"></div></div>
@@ -260,7 +242,6 @@
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 3] 겐츠베이커리 굿즈 (🛠️ 버그 해결을 위해 루트 참조 최적화 완료) -->
     <div id="window-gentz" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-gentz')"></div></div>
@@ -276,7 +257,6 @@
                     <button class="pdf-btn" onclick="changePage(3)">3 페이지 (브레드 박스)</button>
                 </div>
 
-                <!-- 1페이지 -->
                 <div id="goods-p1" class="pdf-page active">
                     <div class="goods-img-box">
                         <img src="./단면 키링 이미지.png" alt="단면 키링 이미지">
@@ -289,7 +269,6 @@
                     </div>
                 </div>
 
-                <!-- 2페이지 -->
                 <div id="goods-p2" class="pdf-page">
                     <div class="goods-img-box">
                         <img src="./우드 서빙 보드 이미지.png" alt="우드 서빙 보드 이미지">
@@ -302,7 +281,6 @@
                     </div>
                 </div>
 
-                <!-- 3페이지 -->
                 <div id="goods-p3" class="pdf-page">
                     <div class="goods-img-box">
                         <img src="./진공 브레드 박스 이미지.png" alt="진공 브레드 박스 이미지">
@@ -318,7 +296,6 @@
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 4] 거제 추천 웹 -->
     <div id="window-geoje" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-geoje')"></div></div>
@@ -343,11 +320,9 @@
         function openWindow(id) { document.getElementById(id).classList.add('active'); }
         function closeWindow(id) { document.getElementById(id).classList.remove('active'); }
 
-        // 🛍️ 겐츠 굿즈 멀티 페이지 컨트롤러
         function changePage(pageNum) {
             document.querySelectorAll('.pdf-page').forEach(page => page.classList.remove('active'));
             document.querySelectorAll('.pdf-btn').forEach(btn => btn.classList.remove('active'));
-            
             document.getElementById('goods-p' + pageNum).classList.add('active');
             event.target.classList.add('active');
         }
