@@ -118,13 +118,14 @@
         .pdf-btn.active { background: #2563eb; color: white; border-color: #2563eb; }
         .pdf-page { display: none; }
         .pdf-page.active { display: block; }
-        .goods-img-box { width: 100%; max-height: 230px; overflow: hidden; border-radius: 6px; margin-bottom: 12px; border: 1px solid #e5e7eb; display: flex; justify-content: center; background: #fdfdfd; }
-        .goods-img-box img { width: 100%; height: 100%; object-fit: contain; }
+        
+        /* 🖼️ 이미지 잘림 방지 스타일 적용 (contain으로 원본 크기 유지) */
+        .goods-img-box { width: 100%; height: 230px; overflow: hidden; border-radius: 6px; margin-bottom: 12px; border: 1px solid #e5e7eb; display: flex; justify-content: center; align-items: center; background: #fdfdfd; }
+        .goods-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
     </style>
 </head>
 <body>
 
-    <!-- 🔒 잠금 화면 -->
     <div id="lock-screen">
         <div class="profile-img">👩‍💻</div>
         <div class="user-name">Sehee Kim</div>
@@ -135,7 +136,6 @@
         </div>
     </div>
 
-    <!-- 🖥️ 메인 바탕화면 -->
     <div id="desktop">
         <div class="menu-bar">
             <div class="menu-left">
@@ -178,7 +178,6 @@
         </div>
     </div>
 
-    <!-- 📑 내 정보 모달 -->
     <div id="window-profile" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-profile')"></div></div>
@@ -224,7 +223,6 @@
         </div>
     </div>
 
-    <!-- 📑 외도널서리 창 -->
     <div id="window-nursery" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-nursery')"></div></div>
@@ -243,7 +241,6 @@
         </div>
     </div>
 
-    <!-- 📑 온더선셋 창 -->
     <div id="window-sunset" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-sunset')"></div></div>
@@ -262,7 +259,6 @@
         </div>
     </div>
 
-    <!-- 🛍️ 겐츠베이커리 멀티 페이지 뷰어 (현재 화면 좌측에 노출된 파일 이름과 100% 일치 매칭 완료) -->
     <div id="window-gentz" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-gentz')"></div></div>
@@ -278,10 +274,9 @@
                     <button class="pdf-btn" onclick="changePage(3)">3 페이지 (브레드 박스)</button>
                 </div>
 
-                <!-- 1페이지 (keyring.png으로 정확하게 링크 매칭) -->
                 <div id="goods-p1" class="pdf-page active">
                     <div class="goods-img-box">
-                        <img src="./keyring.png" alt="단면 키링 이미지">
+                        <img src="./keyring.PNG" alt="단면 키링 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 1. 겐츠 시그니처 메뉴 '단면' 키링 & 마그넷 세트</h4>
@@ -291,10 +286,9 @@
                     </div>
                 </div>
 
-                <!-- 2페이지 (board.png로 링크 매칭) -->
                 <div id="goods-p2" class="pdf-page">
                     <div class="goods-img-box">
-                        <img src="./board.png" alt="우드 서빙 보드 이미지">
+                        <img src="./board.PNG" alt="우드 서빙 보드 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 2. 웨이브 우드 서빙 보드</h4>
@@ -304,7 +298,6 @@
                     </div>
                 </div>
 
-                <!-- 3페이지 (box.png로 링크 매칭) -->
                 <div id="goods-p3" class="pdf-page">
                     <div class="goods-img-box">
                         <img src="./box.png" alt="진공 브레드 박스 이미지">
