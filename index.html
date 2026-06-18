@@ -5,18 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saehee's MacBook Portfolio</title>
     <style>
-        /* 기본 리셋 및 바탕화면 설정 */
+        /* 기본 스타일 리셋 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); /* 맥북 기본 느낌 그라데이션 */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow: hidden;
             position: relative;
         }
 
-        /* 1. 상단 메뉴바 (Mac Menu Bar) */
+        /* [1] 맥북 잠금 화면 (Lock Screen) */
+        #lock-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            color: white;
+        }
+        /* 잠금 풀릴 때 애니메이션 */
+        #lock-screen.unlocked {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .user-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+        .password-container {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .password-container input {
+            background: none;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .password-container input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .login-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 5px;
+        }
+
+        /* [2] 메인 바탕화면 (Desktop) */
+        #desktop {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            position: relative;
+            padding-top: 25px; /* 메뉴바 영역 확보 */
+        }
+
+        /* 상단 메뉴바 */
         .menu-bar {
             width: 100%;
             height: 25px;
@@ -30,11 +105,211 @@
             font-weight: 500;
             color: #333;
             position: absolute;
-            top: 0;
-            z-index: 9999;
+            top: 0; left: 0;
+            z-index: 999;
         }
-        .menu-left span, .menu-right span {
-            margin-right: 15px;
+        .menu-left span, .menu-right span { margin-right: 15px; cursor: pointer; }
+
+        /* 바탕화면 파일/폴더 아이콘 그리드 */
+        .file-grid {
+            position: absolute;
+            top: 50px;
+            right: 20px; /* 맥북처럼 오른쪽에 배치 */
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .desktop-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .desktop-icon .icon-img {
+            font-size: 40px;
+            margin-bottom: 5px;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
+            transition: transform 0.1s ease;
+        }
+        .desktop-icon:hover .icon-img {
+            transform: scale(1.05);
+        }
+        .desktop-icon .icon-name {
+            font-size: 12px;
+            color: #333;
+            background: rgba(255,255,255,0.6);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        /* 하단 독바 */
+        .dock-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+        }
+        .dock {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: flex;
+            gap: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .dock-item {
+            width: 50px; height: 50px;
+            background-color: #fff;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; cursor: pointer;
+            transition: transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .dock-item:hover { transform: scale(1.2) translateY(-10px); }
+
+        /* [3] 프로그램 창 (Modal Window) */
+        .window {
+            width: 600px; height: 400px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            display: flex; flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .window.active { transform: translate(-50%, -50%) scale(1); }
+
+        /* 창 상단 타이틀바 */
+        .title-bar {
+            height: 30px; background: #f6f6f6;
+            border-bottom: 1px solid #d8d8d8;
+            display: flex; align-items: center; padding: 0 10px;
+            position: relative;
+        }
+        .buttons { display: flex; gap: 8px; }
+        .btn { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; }
+        .btn-close { background: #ff5f56; }
+        .btn-minimize { background: #ffbd2e; }
+        .btn-maximize { background: #27c93f; }
+        .window-title {
+            position: absolute; left: 50%; transform: translateX(-50%);
+            font-size: 13px; color: #666; font-weight: 500;
+        }
+
+        /* 창 내부 콘텐츠 */
+        .content { flex: 1; padding: 20px; overflow-y: auto; font-size: 14px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <div id="lock-screen">
+        <div class="profile-img">👩‍💻</div>
+        <div class="user-name">Saehee Kim</div>
+        <div class="password-container">
+            <input type="password" id="password-input" placeholder="비밀번호 입력" onkeypress="checkEnter(event)">
+            <button class="login-btn" onclick="unlock()">➔</button>
+        </div>
+    </div>
+
+    <div id="desktop">
+        <div class="menu-bar">
+            <div class="menu-left">
+                <span style="font-weight: 700;"></span>
+                <span>Finder</span>
+                <span>이동</span>
+                <span>윈도우</span>
+            </div>
+            <div class="menu-right">
+                <span>Wi-Fi</span>
+                <span id="clock">오후 5:28</span>
+            </div>
+        </div>
+
+        <div class="file-grid">
+            <div class="desktop-icon" onclick="openWindow('about-window')">
+                <div class="icon-img">📁</div>
+                <div class="icon-name">자기소개.folder</div>
+            </div>
+            <div class="desktop-icon" onclick="openWindow('project-window')">
+                <div class="icon-img">🎬</div>
+                <div class="icon-name">영상작업물.mov</div>
+            </div>
+            <div class="desktop-icon" onclick="openWindow('marketing-window')">
+                <div class="icon-img">📊</div>
+                <div class="icon-name">기획서_최종.pdf</div>
+            </div>
+        </div>
+
+        <div class="dock-container">
+            <div class="dock">
+                <div class="dock-item" onclick="openWindow('about-window')">👤</div>
+                <div class="dock-item" onclick="openWindow('project-window')">🎞️</div>
+                <div class="dock-item" onclick="openWindow('marketing-window')">📈</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about-window" class="window">
+        <div class="title-bar">
+            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('about-window')"></div></div>
+            <div class="window-title">자기소개.folder</div>
+        </div>
+        <div class="content">
+            <h3>안녕하세요! 콘텐츠 크리에이터 김세희입니다.</h3>
+            <p>미디어콘텐츠 역량과 영상 제작, 기획 스토리를 담는 공간입니다.</p>
+        </div>
+    </div>
+
+    <div id="project-window" class="window">
+        <div class="title-bar">
+            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('project-window')"></div></div>
+            <div class="window-title">영상작업물.mov</div>
+        </div>
+        <div class="content">
+            <h3>🎬 영상 프로젝트 포트폴리오</h3>
+            <p>Premiere Pro, After Effects로 작업한 모션 그래픽 및 광고 reels 영상 목록이 들어갈 자리입니다.</p>
+        </div>
+    </div>
+
+    <div id="marketing-window" class="window">
+        <div class="title-bar">
+            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('marketing-window')"></div></div>
+            <div class="window-title">기획서_최종.pdf</div>
+        </div>
+        <div class="content">
+            <h3>📊 브랜드 마케팅 기획 및 분석 역량</h3>
+            <p>SWOT 분석, STP 전략 등 브랜드 분석 마케팅 기획서 작업물입니다.</p>
+        </div>
+    </div>
+
+    <script>
+        // 잠금 해제 기능
+        function unlock() {
+            document.getElementById('lock-screen').classList.add('unlocked');
+        }
+        // 엔터키 쳐도 풀리게
+        function checkEnter(e) {
+            if (e.key === 'Enter') { unlock(); }
+        }
+
+        // 창 열기/닫기
+        function openWindow(id) { document.getElementById(id).classList.add('active'); }
+        function closeWindow(id) { document.getElementById(id).classList.remove('active'); }
+    </script>
+</body>
+</html>            margin-right: 15px;
             cursor: pointer;
         }
 
