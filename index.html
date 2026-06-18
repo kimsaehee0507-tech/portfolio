@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sehee's MacBook Portfolio</title>
     <style>
+        /* 기본 스타일 리셋 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             width: 100vw; height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow: hidden; position: relative;
         }
+
+        /* [1] 맥북 잠금 화면 (Lock Screen) */
         #lock-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
+            background: url('https://images.unsplash.com/photo-1603302576837-37561b2e2302?q=80&w=2668&auto=format&fit=crop') center/cover no-repeat;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             z-index: 10000; transition: opacity 0.5s ease, transform 0.5s ease; color: white;
         }
@@ -36,6 +39,7 @@
         .password-container input::placeholder { color: rgba(255, 255, 255, 0.5); }
         .login-btn { background: none; border: none; color: white; cursor: pointer; font-size: 16px; margin-left: 5px; }
 
+        /* [2] 메인 바탕화면 (Desktop) - 시네마틱 오렌지/블루 아트워크 완벽 매칭 */
         #desktop {
             width: 100%; height: 100%;
             background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
@@ -48,6 +52,7 @@
         }
         .menu-left span, .menu-right span { margin-right: 15px; cursor: pointer; }
 
+        /* 바탕화면 왼쪽 세로 정렬 아이콘 그리드 */
         .file-grid { position: absolute; top: 55px; left: 25px; display: flex; flex-direction: column; gap: 25px; }
         .desktop-icon { display: flex; flex-direction: column; align-items: center; width: 115px; cursor: pointer; text-align: center; }
         .desktop-icon .icon-img { font-size: 52px; margin-bottom: 6px; filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.25)); transition: transform 0.15s ease; }
@@ -57,6 +62,7 @@
             background: rgba(0, 0, 0, 0.4); padding: 3px 6px; border-radius: 5px; font-weight: 500; word-break: keep-all;
         }
 
+        /* 하단 독바 */
         .dock-container { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 999; }
         .dock {
             background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(25px); padding: 10px 18px; border-radius: 22px; display: flex; gap: 18px;
@@ -69,6 +75,7 @@
         }
         .dock-item:hover { transform: scale(1.25) translateY(-10px); }
 
+        /* 프로그램 모달 창 */
         .window {
             width: 680px; height: 540px; background: #fff; border-radius: 11px;
             box-shadow: 0 25px 55px rgba(0,0,0,0.35); position: absolute; top: 50%; left: 50%;
@@ -84,6 +91,7 @@
         .btn-maximize { background: #27c93f; }
         .window-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 13px; color: #4b5563; font-weight: 600; }
 
+        /* 내부 레이아웃 */
         .content { flex: 1; padding: 25px; overflow-y: auto; font-size: 14px; line-height: 1.7; color: #1f2937; }
         .content h3 { margin-bottom: 15px; color: #111827; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px;}
         .info-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
@@ -92,10 +100,11 @@
         .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; margin-right: 4px; }
         .project-item { background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px; }
         .email-link { color: #2563eb; text-decoration: none; font-weight: 500; }
-        .video-container { display: flex; justify-content: center; margin-top: 15px; background: #000; border-radius: 8px; overflow: hidden; }
+        .video-container { display: flex; justify-content: center; margin-top: 15px; background: #000; border-radius: 8px; overflow: hidden; padding: 10px 0;}
         .web-link-container { text-align: center; margin-top: 25px; }
         .btn-visit { display: inline-block; background: #2563eb; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; }
 
+        /* 🛍️ 겐츠 굿즈 뷰어 레이아웃 */
         .pdf-viewer { display: flex; flex-direction: column; height: 100%; }
         .pdf-navigation { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; background: #f3f4f6; padding: 8px; border-radius: 6px; }
         .pdf-btn { background: white; border: 1px solid #d1d5db; padding: 5px 15px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
@@ -171,9 +180,6 @@
                 <tr><td class="label">이름</td><td>김세희 (Sehee Kim)</td></tr>
                 <tr><td class="label">생년월일</td><td>2005년 5월 7일</td></tr>
                 <tr><td class="label">소속</td><td>경성대학교 미디어콘텐츠학과 재학 중</td></tr>
-                <tr>
-                    <td class="label">사용 툴</td>
-                    </td>
                 </tr>
             </table>
         </div>
@@ -218,7 +224,7 @@
             <h3>🎬 거제 외도널서리 AI 홍보 영상</h3>
             <p>생성형 AI 비주얼을 연계 가공하여 이국적인 식물원 컨셉과 화사한 온실 무드를 밀도 높게 연출한 숏폼 콘텐츠입니다.</p>
             <div class="video-container">
-                <iframe width="290" height="420" src="https://www.youtube.com/embed/1mP2VsyTAmQ" title="외도널서리 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="315" height="400" src="https://www.youtube.com/embed/1mP2VsyTAmQ" title="외도널서리 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -232,7 +238,7 @@
             <h3>🎬 거제 온더선셋 AI 홍보 영상</h3>
             <p>탁 트인 거제 오션 뷰의 시원하고 청량한 감성 포인트를 숏폼 스타일에 맞추어 연출한 숏폼 콘텐츠입니다.</p>
             <div class="video-container">
-                <iframe width="290" height="420" src="https://www.youtube.com/embed/Z3sUDTAkdiI" title="온더선셋 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="315" height="400" src="https://www.youtube.com/embed/Z3sUDTAkdiI" title="온더선셋 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -254,7 +260,7 @@
 
                 <div id="goods-p1" class="pdf-page active">
                     <div class="goods-img-box">
-                        <img src="./단면 키링 이미지.png" alt="단면 키링 이미지">
+                        <img src="./keyring.png" alt="단면 키링 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 1. 겐츠 시그니처 메뉴 '단면' 키링 & 마그넷 세트</h4>
@@ -266,7 +272,7 @@
 
                 <div id="goods-p2" class="pdf-page">
                     <div class="goods-img-box">
-                        <img src="./우드 서빙 보드 이미지.png" alt="우드 서빙 보드 이미지">
+                        <img src="./board.png" alt="우드 서빙 보드 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 2. 웨이브 우드 서빙 보드</h4>
@@ -278,7 +284,7 @@
 
                 <div id="goods-p3" class="pdf-page">
                     <div class="goods-img-box">
-                        <img src="./진공 브레드 박스 이미지.png" alt="진공 브레드 박스 이미지">
+                        <img src="./box.png" alt="진공 브레드 박스 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 3. 겐츠 '프레시 킵' 진공 브레드 박스</h4>
