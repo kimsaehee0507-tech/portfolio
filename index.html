@@ -62,7 +62,6 @@
         /* [2] 메인 바탕화면 (Desktop) */
         #desktop {
             width: 100%; height: 100%;
-            /* 🌌 요청하신 아트워크 이미지 배경화면 완벽 적용 */
             background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
             position: relative; padding-top: 25px;
         }
@@ -75,11 +74,11 @@
         }
         .menu-left span, .menu-right span { margin-right: 15px; cursor: pointer; }
 
-        /* 👈 바탕화면 왼쪽 세로 정렬 아이콘 그리드 (프로젝트 4개 구성) */
+        /* 바탕화면 왼쪽 세로 정렬 아이콘 그리드 */
         .file-grid {
             position: absolute; top: 55px; left: 25px; display: flex; flex-direction: column; gap: 25px;
         }
-        .desktop-icon { display: flex; flex-direction: column; align-items: center; width: 95px; cursor: pointer; text-align: center; }
+        .desktop-icon { display: flex; flex-direction: column; align-items: center; width: 105px; cursor: pointer; text-align: center; }
         .desktop-icon .icon-img {
             font-size: 52px; margin-bottom: 6px; filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.25)); transition: transform 0.15s ease;
         }
@@ -89,7 +88,7 @@
             background: rgba(0, 0, 0, 0.4); padding: 3px 6px; border-radius: 5px; font-weight: 500; word-break: keep-all;
         }
 
-        /* 📥 하단 독바 (중앙 하단 3개 아이콘 유지) */
+        /* 하단 독바 */
         .dock-container { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 999; }
         .dock {
             background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(25px);
@@ -103,9 +102,9 @@
         }
         .dock-item:hover { transform: scale(1.25) translateY(-10px); }
 
-        /* [3] 프로그램 모달 창 */
+        /* 프로그램 모달 창 */
         .window {
-            width: 650px; height: 460px; background: #fff; border-radius: 11px;
+            width: 680px; height: 520px; background: #fff; border-radius: 11px;
             box-shadow: 0 25px 55px rgba(0,0,0,0.35); position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%) scale(0); display: flex; flex-direction: column;
             overflow: hidden; z-index: 1000; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -127,15 +126,29 @@
             font-size: 13px; color: #4b5563; font-weight: 600;
         }
 
-        /* 창 내부 콘텐츠 양식 */
+        /* 내부 레이아웃 구조화 */
         .content { flex: 1; padding: 25px; overflow-y: auto; font-size: 14px; line-height: 1.7; color: #1f2937; }
         .content h3 { margin-bottom: 15px; color: #111827; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px;}
         .info-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .info-table td { padding: 10px; border-bottom: 1px solid #f3f4f6; }
         .info-table td.label { font-weight: 600; color: #4b5563; width: 100px; }
         .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; margin-right: 4px; }
-        .project-item { background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 12px; }
-        .email-link { color: #2563eb; text-decoration: none; font-weight: 500; }
+        .project-item { background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px; }
+        .project-item h4 { margin-bottom: 5px; color: #1f2937; }
+        .email-link, .web-btn { color: #2563eb; text-decoration: none; font-weight: 500; }
+        
+        /* 🎬 숏폼 영상 임베드 스타일 패널 */
+        .video-container {
+            display: flex; justify-content: center; margin-top: 15px; background: #000; border-radius: 8px; overflow: hidden;
+        }
+
+        /* 🌐 링크 버튼 */
+        .web-link-container { text-align: center; margin-top: 25px; }
+        .btn-visit {
+            display: inline-block; background: #2563eb; color: white; padding: 10px 24px; border-radius: 6px;
+            text-decoration: none; font-weight: 500; transition: background 0.2s;
+        }
+        .btn-visit:hover { background: #1d4ed8; }
     </style>
 </head>
 <body>
@@ -163,11 +176,11 @@
             </div>
             <div class="menu-right">
                 <span>Wi-Fi</span>
-                <span id="clock">오후 6:05</span>
+                <span id="clock">오후 6:08</span>
             </div>
         </div>
 
-        <!-- 📂 [왼쪽 배치] 개별 프로젝트 4개 아이콘 리스트 -->
+        <!-- 📂 [왼쪽 배치] 프로젝트 4개 리스트 아이콘 -->
         <div class="file-grid">
             <div class="desktop-icon" onclick="openWindow('window-nursery')">
                 <div class="icon-img">🎬</div>
@@ -197,7 +210,7 @@
         </div>
     </div>
 
-    <!-- 📑 [독바] 1. 내 정보 창 -->
+    <!-- 📑 [독바 1] 내 정보 창 -->
     <div id="window-profile" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-profile')"></div></div>
@@ -222,7 +235,7 @@
         </div>
     </div>
 
-    <!-- 📑 [독바] 2. 통합 워크 아카이브 폴더 창 -->
+    <!-- 📑 [독바 2] 통합 워크 아카이브 폴더 창 -->
     <div id="window-archive" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-archive')"></div></div>
@@ -230,17 +243,17 @@
         </div>
         <div class="content">
             <h3>📂 전체 프로젝트 요약 목록</h3>
-            <p style="margin-bottom: 15px;">바탕화면의 개별 아이콘을 누르시면 더 자세한 기획 내용을 보실 수 있습니다.</p>
+            <p style="margin-bottom: 15px;">바탕화면의 개별 아이콘을 직접 실행하시면 상세 작업 환경 및 링크를 확인할 수 있습니다.</p>
             <div class="project-item">
-                <p>• <strong>🎬 외도널서리 영상</strong>: AI 생성형 툴 연계 Reels 쇼츠 영상</p>
-                <p>• <strong>🎬 온더선셋 영상</strong>: 시네마틱 감성의 일몰 마케팅 숏폼 영상</p>
-                <p>• <strong>🛍️ 겐츠베이커리 굿즈</strong>: 브랜드 아이덴티티 반영 커스텀 굿즈 기획 3가지</p>
-                <p>• <strong>🌐 거제 카페 추천 웹</strong>: 편의성을 극대화한 카페 큐레이션 반응형 웹사이트</p>
+                <p>• <strong>🎬 외도널서리 홍보 영상</strong>: 생성형 AI 연계 숏폼 비주얼 아카이브</p>
+                <p>• <strong>🎬 온더선셋 홍보 영상</strong>: 시네마틱 타임랩스 감성 마케팅 쇼츠</p>
+                <p>• <strong>🛍️ 겐츠베이커리 굿즈 기획</strong>: 시그니처 단면 굿즈, 우드보드, 브레드박스 등 3종 아이디어</p>
+                <p>• <strong>🌐 거제 카페 추천 웹사이트</strong>: 편리한 검색 인터페이스 큐레이션 플랫폼</p>
             </div>
         </div>
     </div>
 
-    <!-- 📑 [독바] 3. 컨택 창 -->
+    <!-- 📑 [독바 3] 컨택 창 -->
     <div id="window-contact" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-contact')"></div></div>
@@ -255,63 +268,84 @@
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 1] 외도널서리 창 -->
+    <!-- 📑 [바탕화면 1] 외도널서리 영상 플레이어 모달 -->
     <div id="window-nursery" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-nursery')"></div></div>
             <div class="window-title">외도널서리_영상.mov</div>
         </div>
         <div class="content">
-            <h3>🎬 거제 외도널서리 카페 홍보 영상</h3>
-            <div class="project-item">
-                <p>AI 영상 생성형 툴을 적극적으로 연계 및 레이어링하여, 외도널서리 고유의 이국적인 식물원 컨셉과 화사한 온실 속 선샤인 무드를 감각적으로 연출한 Reels 숏폼 마케팅 비주얼 영상 포트폴리오입니다.</p>
+            <h3>🎬 거제 외도널서리 AI 홍보 영상</h3>
+            <p>생성형 AI 비주얼을 연계 가공하여 이국적인 식물원 컨셉과 화사한 온실 무드를 밀도 높게 연출한 숏폼 콘텐츠입니다.</p>
+            <div class="video-container">
+                <!-- 숏폼 맞춤 비율 임베드 세팅 -->
+                <iframe width="290" height="420" src="https://www.youtube.com/embed/1mP2VsyTAmQ" title="외도널서리 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 2] 온더선셋 창 -->
+    <!-- 📑 [바탕화면 2] 온더선셋 영상 플레이어 모달 -->
     <div id="window-sunset" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-sunset')"></div></div>
             <div class="window-title">온더선셋_영상.mov</div>
         </div>
         <div class="content">
-            <h3>🎬 거제 온더선셋 카페 홍보 영상</h3>
-            <div class="project-item">
-                <p>탁 트인 오션 시네마틱 뷰와 일몰 타이밍의 따뜻하고 낭만적인 감성 포인트를 캐치하여, 트렌디한 1분 미션 및 숏폼 무드 스타일에 맞춰 직접 기획 및 제작 완료한 영상 결과물입니다.</p>
+            <h3>🎬 거제 온더선셋 AI 홍보 영상</h3>
+            <p>시네마틱한 오션뷰와 오렌지빛 일몰 타이밍의 감성을 트렌디한 바이럴 기획에 맞추어 담아낸 비주얼 쇼츠입니다.</p>
+            <div class="video-container">
+                <iframe width="290" height="420" src="https://www.youtube.com/embed/Z3sUDTAkdiI" title="온더선셋 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></tbody></iframe>
             </div>
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 3] 겐츠베이커리 굿즈 창 -->
+    <!-- 📑 [바탕화면 3] 겐츠베이커리 굿즈 기획서 상세 (이미지 내용 데이터 완벽 반영) -->
     <div id="window-gentz" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-gentz')"></div></div>
             <div class="window-title">겐츠_굿즈기획.pdf</div>
         </div>
         <div class="content">
-            <h3>🛍️ 겐츠베이커리 브랜딩 및 굿즈 기획</h3>
-            <p>전통적인 베이커리 감성에 트렌디한 소비자 감각을 더해 제안하는 **3가지 핵심 브랜딩 커스텀 굿즈 라인업**입니다.</p>
-            <br>
+            <h3>🛍️ 겐츠베이커리 브랜딩 굿즈 디자인 기획 (3 아이디어)</h3>
+            
             <div class="project-item">
-                <h4>✨ 3가지 주요 기획 라인</h4>
-                <p>1. 실용성과 소장 가치를 동시에 충족하는 시그니처 굿즈 구성</p>
-                <p>2. 일상 속 녹아드는 세련된 일러스트 및 그래픽 패키지 디자인</p>
-                <p>3. 타겟 소비자 취향을 타격하여 SNS 바이럴 및 오프라인 연계 유도가 가능한 아이템</p>
+                <h4>💡 아이디어 1. 시그니처 메뉴 '단면' 키링 & 마그넷 세트</h4>
+                <p>• <strong>컨셉</strong>: 몽블랑, 타르트 등 대표 메뉴를 반으로 가른 미니어처 상세 재현</p>
+                <p>• <strong>디테일</strong>: 겉바속촉 리얼한 빵 질감 표현, 투명 에폭시 광택 및 코팅 마감</p>
+                <p>• <strong>패키징</strong>: 유선지 및 미니 우드 집게를 포함한 네이비 고급 패키지 구성</p>
+            </div>
+
+            <div class="project-item">
+                <h4>💡 아이디어 2. 웨이브 우드 서빙 보드</h4>
+                <p>• <strong>컨셉</strong>: 부산의 파도와 빵 반죽의 비정형 곡선 라인을 모티브로 한 프리미어 오브제</p>
+                <p>• <strong>디테일</strong>: 티크/월넛 원목 오일 마감, 가로 가장자리에 빵가루를 모아주는 크럼 캐처 홈 설계</p>
+                <p>• <strong>아이덴티티</strong>: 우측 하단 겐츠 베이커리 로컬 헤리티지 레이저 각인 반영</p>
+            </div>
+
+            <div class="project-item">
+                <h4>💡 아이디어 3. '프레시 킵' 진공 브레드 박스</h4>
+                <p>• <strong>컨셉</strong>: 원터치 진공 밀폐 기술로 수분 증발을 차단하는 고기능성 빵 보관 팩</p>
+                <p>• <strong>디테일</strong>: BPA FREE 안전 소재, 매트한 블랙 질감 및 골드 로고 마감</p>
+                <p>• <strong>가이드</strong>: 뚜껑 안쪽에 소금빵, 크루아상, 바게트 등 최적의 보관 가이드라인 인쇄 디자인</p>
             </div>
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 4] 거제 추천 웹 창 -->
+    <!-- 📑 [바탕화면 4] 거제 카페 웹사이트 앱 링크 연동 모달 -->
     <div id="window-geoje" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-geoje')"></div></div>
             <div class="window-title">거제_추천웹.app</div>
         </div>
         <div class="content">
-            <h3>🌐 거제 카페 큐레이션 및 추천 웹사이트</h3>
-            <div class="project-item">
-                <p>사용자 동선과 UI/UX 편의성을 꼼꼼히 설계하여 거제의 핫플레이스 카페들을 한눈에 서칭하고 필터링할 수 있도록 큐레이션한 피드 스타일 형태의 반응형 포트폴리오 웹사이트 디자인 아카이브입니다.</p>
+            <h3>🌐 거제 카페 큐레이션 및 추천 웹 플랫폼</h3>
+            <p>사용자 경험(UI/UX)과 서칭 편의를 위해 지도 및 카테고리 필터를 도입한 트렌디한 반응형 웹 큐레이션 서비스입니다.</p>
+            <div class="project-item" style="margin-top: 15px;">
+                <p>• <strong>도메인 링크</strong>: <a href="https://geoje-cafe.aiapp.help" target="_blank" class="email-link">geoje-cafe.aiapp.help</a></p>
+                <p>• <strong>특징</strong>: 모바일 패널 최적화, 거제 핫플레이스(외도널서리, 온더선셋 등) 동선 연계 연출</p>
+            </div>
+            <div class="web-link-container">
+                <a href="https://geoje-cafe.aiapp.help" target="_blank" class="btn-visit">🖥️ 웹사이트 바로가기</a>
             </div>
         </div>
     </div>
