@@ -12,11 +12,11 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             overflow: hidden; position: relative;
         }
-/* [1] 맥북 잠금 화면 (Lock Screen) */
+
+        /* [1] 맥북 잠금 화면 (Lock Screen) - 요청하신 주소로 완벽 고정 */
         #lock-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            /* 💻 잠금화면 배경을 원래의 진짜 맥북 느낌 노트북 배경으로 원상복구 */
-            background: url('https://images.unsplash.com/photo-1603302576837-37561b2e2302?q=80&w=2668&auto=format&fit=crop') center/cover no-repeat;
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             z-index: 10000; transition: opacity 0.5s ease, transform 0.5s ease; color: white;
         }
@@ -39,7 +39,7 @@
         .password-container input::placeholder { color: rgba(255, 255, 255, 0.5); }
         .login-btn { background: none; border: none; color: white; cursor: pointer; font-size: 16px; margin-left: 5px; }
 
-        /* [2] 메인 바탕화면 (Desktop) - 시네마틱 오렌지/블루 아트워크 완벽 매칭 */
+        /* [2] 메인 바탕화면 (Desktop) */
         #desktop {
             width: 100%; height: 100%;
             background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
@@ -52,7 +52,7 @@
         }
         .menu-left span, .menu-right span { margin-right: 15px; cursor: pointer; }
 
-        /* 바탕화면 왼쪽 세로 정렬 아이콘 그리드 */
+        /* 바탕화면 파일 그리드 레이아웃 */
         .file-grid { position: absolute; top: 55px; left: 25px; display: flex; flex-direction: column; gap: 25px; }
         .desktop-icon { display: flex; flex-direction: column; align-items: center; width: 115px; cursor: pointer; text-align: center; }
         .desktop-icon .icon-img { font-size: 52px; margin-bottom: 6px; filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.25)); transition: transform 0.15s ease; }
@@ -75,7 +75,7 @@
         }
         .dock-item:hover { transform: scale(1.25) translateY(-10px); }
 
-        /* 프로그램 모달 창 */
+        /* 프로그램 모달 디자인 */
         .window {
             width: 680px; height: 540px; background: #fff; border-radius: 11px;
             box-shadow: 0 25px 55px rgba(0,0,0,0.35); position: absolute; top: 50%; left: 50%;
@@ -91,20 +91,18 @@
         .btn-maximize { background: #27c93f; }
         .window-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 13px; color: #4b5563; font-weight: 600; }
 
-        /* 내부 레이아웃 */
         .content { flex: 1; padding: 25px; overflow-y: auto; font-size: 14px; line-height: 1.7; color: #1f2937; }
         .content h3 { margin-bottom: 15px; color: #111827; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px;}
         .info-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .info-table td { padding: 10px; border-bottom: 1px solid #f3f4f6; }
         .info-table td.label { font-weight: 600; color: #4b5563; width: 100px; }
-        .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; margin-right: 4px; }
         .project-item { background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px; }
         .email-link { color: #2563eb; text-decoration: none; font-weight: 500; }
         .video-container { display: flex; justify-content: center; margin-top: 15px; background: #000; border-radius: 8px; overflow: hidden; padding: 10px 0;}
         .web-link-container { text-align: center; margin-top: 25px; }
         .btn-visit { display: inline-block; background: #2563eb; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; }
 
-        /* 🛍️ 겐츠 굿즈 뷰어 레이아웃 */
+        /* 🛍️ 겐츠 굿즈 레이아웃 */
         .pdf-viewer { display: flex; flex-direction: column; height: 100%; }
         .pdf-navigation { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; background: #f3f4f6; padding: 8px; border-radius: 6px; }
         .pdf-btn { background: white; border: 1px solid #d1d5db; padding: 5px 15px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
@@ -117,6 +115,7 @@
 </head>
 <body>
 
+    <!-- 🔒 잠금 화면 (요청 사항 완벽 반영) -->
     <div id="lock-screen">
         <div class="profile-img">👩‍💻</div>
         <div class="user-name">Sehee Kim</div>
@@ -127,6 +126,7 @@
         </div>
     </div>
 
+    <!-- 🖥️ 메인 바탕화면 -->
     <div id="desktop">
         <div class="menu-bar">
             <div class="menu-left">
@@ -169,6 +169,7 @@
         </div>
     </div>
 
+    <!-- 📑 내 정보 모달 (사용 툴 제거 완료) -->
     <div id="window-profile" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-profile')"></div></div>
@@ -180,7 +181,6 @@
                 <tr><td class="label">이름</td><td>김세희 (Sehee Kim)</td></tr>
                 <tr><td class="label">생년월일</td><td>2005년 5월 7일</td></tr>
                 <tr><td class="label">소속</td><td>경성대학교 미디어콘텐츠학과 재학 중</td></tr>
-                </tr>
             </table>
         </div>
     </div>
@@ -243,6 +243,7 @@
         </div>
     </div>
 
+    <!-- 🛍️ 겐츠베이커리 인코딩 고유 절대 링크 복구 패치 -->
     <div id="window-gentz" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-gentz')"></div></div>
@@ -258,9 +259,10 @@
                     <button class="pdf-btn" onclick="changePage(3)">3 페이지 (브레드 박스)</button>
                 </div>
 
+                <!-- 1페이지 -->
                 <div id="goods-p1" class="pdf-page active">
                     <div class="goods-img-box">
-                        <img src="./keyring.png" alt="단면 키링 이미지">
+                        <img src="https://kimsaehee0507-tech.github.io/portfolio/%EB%8B%A8%EB%A9%B4%20%ED%82%A4%EB%A7%81%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="단면 키링 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 1. 겐츠 시그니처 메뉴 '단면' 키링 & 마그넷 세트</h4>
@@ -270,9 +272,10 @@
                     </div>
                 </div>
 
+                <!-- 2페이지 -->
                 <div id="goods-p2" class="pdf-page">
                     <div class="goods-img-box">
-                        <img src="./board.png" alt="우드 서빙 보드 이미지">
+                        <img src="https://kimsaehee0507-tech.github.io/portfolio/%EC%9A%B0%EB%93%9C%20%EC%84%9C%EB%B9%9D%20%EB%B3%B4%EB%93%9C%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="우드 서빙 보드 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 2. 웨이브 우드 서빙 보드</h4>
@@ -282,9 +285,10 @@
                     </div>
                 </div>
 
+                <!-- 3페이지 -->
                 <div id="goods-p3" class="pdf-page">
                     <div class="goods-img-box">
-                        <img src="./box.png" alt="진공 브레드 박스 이미지">
+                        <img src="https://kimsaehee0507-tech.github.io/portfolio/%EC%A7%84%EA%B3%B5%20%EB%B8%8C%EB%A0%88%EB%93%9C%20%EB%B0%95%EC%8A%A4%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="진공 브레드 박스 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 3. 겐츠 '프레시 킵' 진공 브레드 박스</h4>
