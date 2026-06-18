@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sehee's MacBook Portfolio</title>
     <style>
+        /* 기본 스타일 리셋 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             width: 100vw;
@@ -14,7 +15,7 @@
             position: relative;
         }
 
-        /* [1] 맥북 잠금 화면 */
+        /* [1] 맥북 잠금 화면 (Lock Screen) */
         #lock-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -42,7 +43,6 @@
             font-size: 22px; font-weight: 600; margin-bottom: 8px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.4);
         }
-        /* 💬 잠금화면 안내 문구 추가 */
         .lock-hint {
             font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 20px;
             font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.3);
@@ -62,7 +62,7 @@
         /* [2] 메인 바탕화면 (Desktop) */
         #desktop {
             width: 100%; height: 100%;
-            /* 🌌 사용자가 업로드한 고화질 아트워크 배경화면 적용 */
+            /* 🌌 요청하신 아트워크 이미지 배경화면 완벽 적용 */
             background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
             position: relative; padding-top: 25px;
         }
@@ -75,21 +75,21 @@
         }
         .menu-left span, .menu-right span { margin-right: 15px; cursor: pointer; }
 
-        /* 바탕화면 파일 아이콘 그리드 (왼쪽 세로 배치) */
+        /* 👈 바탕화면 왼쪽 세로 정렬 아이콘 그리드 (프로젝트 4개 구성) */
         .file-grid {
-            position: absolute; top: 50px; left: 25px; display: flex; flex-direction: column; gap: 30px;
+            position: absolute; top: 55px; left: 25px; display: flex; flex-direction: column; gap: 25px;
         }
-        .desktop-icon { display: flex; flex-direction: column; align-items: center; width: 85px; cursor: pointer; text-align: center; }
+        .desktop-icon { display: flex; flex-direction: column; align-items: center; width: 95px; cursor: pointer; text-align: center; }
         .desktop-icon .icon-img {
             font-size: 52px; margin-bottom: 6px; filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.25)); transition: transform 0.15s ease;
         }
         .desktop-icon:hover .icon-img { transform: scale(1.1); }
         .desktop-icon .icon-name {
-            font-size: 12px; color: white; text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.8);
-            background: rgba(0, 0, 0, 0.35); padding: 3px 8px; border-radius: 5px; font-weight: 500; word-break: keep-all;
+            font-size: 11px; color: white; text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.4); padding: 3px 6px; border-radius: 5px; font-weight: 500; word-break: keep-all;
         }
 
-        /* 하단 독바 */
+        /* 📥 하단 독바 (중앙 하단 3개 아이콘 유지) */
         .dock-container { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 999; }
         .dock {
             background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(25px);
@@ -136,11 +136,11 @@
         .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; margin-right: 4px; }
         .project-item { background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 12px; }
         .email-link { color: #2563eb; text-decoration: none; font-weight: 500; }
-        .email-link:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
+    <!-- 🔒 잠금 화면 -->
     <div id="lock-screen">
         <div class="profile-img">👩‍💻</div>
         <div class="user-name">Sehee Kim</div>
@@ -151,7 +151,9 @@
         </div>
     </div>
 
+    <!-- 🖥️ 메인 바탕화면 -->
     <div id="desktop">
+        <!-- 상단 메뉴바 -->
         <div class="menu-bar">
             <div class="menu-left">
                 <span style="font-weight: 700;"></span>
@@ -161,37 +163,44 @@
             </div>
             <div class="menu-right">
                 <span>Wi-Fi</span>
-                <span id="clock">오후 5:55</span>
+                <span id="clock">오후 6:05</span>
             </div>
         </div>
 
+        <!-- 📂 [왼쪽 배치] 개별 프로젝트 4개 아이콘 리스트 -->
         <div class="file-grid">
-            <div class="desktop-icon" onclick="openWindow('profile-window')">
-                <div class="icon-img">👤</div>
-                <div class="icon-name">내_정보.info</div>
+            <div class="desktop-icon" onclick="openWindow('window-nursery')">
+                <div class="icon-img">🎬</div>
+                <div class="icon-name">외도널서리_영상.mov</div>
             </div>
-            <div class="desktop-icon" onclick="openWindow('archive-window')">
-                <div class="icon-img">📁</div>
-                <div class="icon-name">Work_Archive</div>
+            <div class="desktop-icon" onclick="openWindow('window-sunset')">
+                <div class="icon-img">🎬</div>
+                <div class="icon-name">온더선셋_영상.mov</div>
             </div>
-            <div class="desktop-icon" onclick="openWindow('contact-window')">
-                <div class="icon-img">✉️</div>
-                <div class="icon-name">Contact.txt</div>
+            <div class="desktop-icon" onclick="openWindow('window-gentz')">
+                <div class="icon-img">🛍️</div>
+                <div class="icon-name">겐츠_굿즈기획.pdf</div>
+            </div>
+            <div class="desktop-icon" onclick="openWindow('window-geoje')">
+                <div class="icon-img">🌐</div>
+                <div class="icon-name">거제_추천웹.app</div>
             </div>
         </div>
 
+        <!-- 📥 하단 독바 (내정보, 아카이브, 연락처 고정) -->
         <div class="dock-container">
             <div class="dock">
-                <div class="dock-item" onclick="openWindow('profile-window')">👤</div>
-                <div class="dock-item" onclick="openWindow('archive-window')">📁</div>
-                <div class="dock-item" onclick="openWindow('contact-window')">✉️</div>
+                <div class="dock-item" onclick="openWindow('window-profile')">👤</div>
+                <div class="dock-item" onclick="openWindow('window-archive')">📁</div>
+                <div class="dock-item" onclick="openWindow('window-contact')">✉️</div>
             </div>
         </div>
     </div>
 
-    <div id="profile-window" class="window">
+    <!-- 📑 [독바] 1. 내 정보 창 -->
+    <div id="window-profile" class="window">
         <div class="title-bar">
-            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('profile-window')"></div></div>
+            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-profile')"></div></div>
             <div class="window-title">내_정보.info</div>
         </div>
         <div class="content">
@@ -213,44 +222,97 @@
         </div>
     </div>
 
-    <div id="archive-window" class="window">
+    <!-- 📑 [독바] 2. 통합 워크 아카이브 폴더 창 -->
+    <div id="window-archive" class="window">
         <div class="title-bar">
-            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('archive-window')"></div></div>
+            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-archive')"></div></div>
             <div class="window-title">Work_Archive</div>
         </div>
         <div class="content">
-            <h3>📂 제작 및 기획 아카이브</h3>
-            
+            <h3>📂 전체 프로젝트 요약 목록</h3>
+            <p style="margin-bottom: 15px;">바탕화면의 개별 아이콘을 누르시면 더 자세한 기획 내용을 보실 수 있습니다.</p>
             <div class="project-item">
-                <h4>🎬 AI 생성 카페 홍보 영상 시리즈</h4>
-                <p>• <strong>거제 외도널서리</strong>: 이국적인 식물원 무드와 햇살을 감각적으로 연출한 AI 생성 숏폼 비주얼 영상</p>
-                <p>• <strong>거제 온더선셋</strong>: 아름다운 노을 테마의 트렌디한 시네마틱 1분 마케팅 숏폼 영상</p>
-            </div>
-
-            <div class="project-item">
-                <h4>🛍️ 겐츠베이커리 브랜딩 굿즈 기획</h4>
-                <p>• 브랜드 아이덴티티와 라이프스타일 트렌드를 조합하여 제안하는 3가지 시그니처 커스텀 굿즈 기획서</p>
-            </div>
-
-            <div class="project-item">
-                <h4>🌐 거제 카페 큐레이션 추천 웹사이트</h4>
-                <p>• 거제의 대표적인 핫플레이스 카페들을 엄선하여 편리한 UI/UX 피드로 제공하는 반응형 추천 웹 서비스</p>
+                <p>• <strong>🎬 외도널서리 영상</strong>: AI 생성형 툴 연계 Reels 쇼츠 영상</p>
+                <p>• <strong>🎬 온더선셋 영상</strong>: 시네마틱 감성의 일몰 마케팅 숏폼 영상</p>
+                <p>• <strong>🛍️ 겐츠베이커리 굿즈</strong>: 브랜드 아이덴티티 반영 커스텀 굿즈 기획 3가지</p>
+                <p>• <strong>🌐 거제 카페 추천 웹</strong>: 편의성을 극대화한 카페 큐레이션 반응형 웹사이트</p>
             </div>
         </div>
     </div>
 
-    <div id="contact-window" class="window">
+    <!-- 📑 [독바] 3. 컨택 창 -->
+    <div id="window-contact" class="window">
         <div class="title-bar">
-            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('contact-window')"></div></div>
+            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-contact')"></div></div>
             <div class="window-title">Contact.txt</div>
         </div>
         <div class="content">
             <h3>✉️ Contact Me</h3>
-            <p style="margin-bottom: 12px;">협업 및 제안은 아래 이메일로 편하게 연락해 주세요!</p>
             <table class="info-table">
                 <tr><td class="label">Naver</td><td><a href="mailto:hee050507@naver.com" class="email-link">hee050507@naver.com</a></td></tr>
                 <tr><td class="label">Gmail</td><td><a href="mailto:kimsaehee0507@gmail.com" class="email-link">kimsaehee0507@gmail.com</a></td></tr>
             </table>
+        </div>
+    </div>
+
+    <!-- 📑 [바탕화면 1] 외도널서리 창 -->
+    <div id="window-nursery" class="window">
+        <div class="title-bar">
+            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-nursery')"></div></div>
+            <div class="window-title">외도널서리_영상.mov</div>
+        </div>
+        <div class="content">
+            <h3>🎬 거제 외도널서리 카페 홍보 영상</h3>
+            <div class="project-item">
+                <p>AI 영상 생성형 툴을 적극적으로 연계 및 레이어링하여, 외도널서리 고유의 이국적인 식물원 컨셉과 화사한 온실 속 선샤인 무드를 감각적으로 연출한 Reels 숏폼 마케팅 비주얼 영상 포트폴리오입니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📑 [바탕화면 2] 온더선셋 창 -->
+    <div id="window-sunset" class="window">
+        <div class="title-bar">
+            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-sunset')"></div></div>
+            <div class="window-title">온더선셋_영상.mov</div>
+        </div>
+        <div class="content">
+            <h3>🎬 거제 온더선셋 카페 홍보 영상</h3>
+            <div class="project-item">
+                <p>탁 트인 오션 시네마틱 뷰와 일몰 타이밍의 따뜻하고 낭만적인 감성 포인트를 캐치하여, 트렌디한 1분 미션 및 숏폼 무드 스타일에 맞춰 직접 기획 및 제작 완료한 영상 결과물입니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📑 [바탕화면 3] 겐츠베이커리 굿즈 창 -->
+    <div id="window-gentz" class="window">
+        <div class="title-bar">
+            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-gentz')"></div></div>
+            <div class="window-title">겐츠_굿즈기획.pdf</div>
+        </div>
+        <div class="content">
+            <h3>🛍️ 겐츠베이커리 브랜딩 및 굿즈 기획</h3>
+            <p>전통적인 베이커리 감성에 트렌디한 소비자 감각을 더해 제안하는 **3가지 핵심 브랜딩 커스텀 굿즈 라인업**입니다.</p>
+            <br>
+            <div class="project-item">
+                <h4>✨ 3가지 주요 기획 라인</h4>
+                <p>1. 실용성과 소장 가치를 동시에 충족하는 시그니처 굿즈 구성</p>
+                <p>2. 일상 속 녹아드는 세련된 일러스트 및 그래픽 패키지 디자인</p>
+                <p>3. 타겟 소비자 취향을 타격하여 SNS 바이럴 및 오프라인 연계 유도가 가능한 아이템</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 📑 [바탕화면 4] 거제 추천 웹 창 -->
+    <div id="window-geoje" class="window">
+        <div class="title-bar">
+            <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-geoje')"></div></div>
+            <div class="window-title">거제_추천웹.app</div>
+        </div>
+        <div class="content">
+            <h3>🌐 거제 카페 큐레이션 및 추천 웹사이트</h3>
+            <div class="project-item">
+                <p>사용자 동선과 UI/UX 편의성을 꼼꼼히 설계하여 거제의 핫플레이스 카페들을 한눈에 서칭하고 필터링할 수 있도록 큐레이션한 피드 스타일 형태의 반응형 포트폴리오 웹사이트 디자인 아카이브입니다.</p>
+            </div>
         </div>
     </div>
 
@@ -259,12 +321,6 @@
         function checkEnter(e) { if (e.key === 'Enter') { unlock(); } }
         function openWindow(id) { document.getElementById(id).classList.add('active'); }
         function closeWindow(id) { document.getElementById(id).classList.remove('active'); }
-        
-        // 실시간 맥북 시계 효과 (옵션)
-        setInterval(() => {
-            const now = new Date();
-            document.getElementById('clock').innerText = now.toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
-        }, 60000);
     </script>
 </body>
 </html>
