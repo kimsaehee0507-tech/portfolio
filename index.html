@@ -52,8 +52,14 @@
         }
         .menu-left span, .menu-right span { margin-right: 15px; cursor: pointer; }
 
-        /* 🚀 바탕화면 파일 그리드 레이아웃 (추천 1 반영: 크기 대폭 확대 및 간격 비율 조정) */
-        .file-grid { position: absolute; top: 50px; left: 25px; display: flex; flex-direction: column; gap: 20px; }
+        /* 🚀 바탕화면 파일 그리드 레이아웃 (선택 A: 화면 완전 정중앙 가로 정렬 스타일로 완벽 패치) */
+        .file-grid { 
+            position: absolute; 
+            top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); 
+            display: flex; flex-direction: row; 
+            gap: 25px; justify-content: center; align-items: center; 
+        }
         .desktop-icon { display: flex; flex-direction: column; align-items: center; width: 135px; cursor: pointer; text-align: center; }
         .desktop-icon .icon-img { font-size: 64px; margin-bottom: 8px; filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.3)); transition: transform 0.15s ease; }
         .desktop-icon:hover .icon-img { transform: scale(1.12); }
@@ -125,6 +131,7 @@
 </head>
 <body>
 
+    <!-- 🔒 잠금 화면 -->
     <div id="lock-screen">
         <div class="profile-img">👩‍💻</div>
         <div class="user-name">Sehee Kim</div>
@@ -135,6 +142,7 @@
         </div>
     </div>
 
+    <!-- 🖥️ 메인 바탕화면 -->
     <div id="desktop">
         <div class="menu-bar">
             <div class="menu-left">
@@ -149,6 +157,7 @@
             </div>
         </div>
 
+        <!-- 🚀 정중앙 가로 정렬된 5개 아이콘 배치 -->
         <div class="file-grid">
             <div class="desktop-icon" onclick="openWindow('window-nursery')">
                 <div class="icon-img">🎬</div>
@@ -168,10 +177,11 @@
             </div>
             <div class="desktop-icon" onclick="openWindow('window-geoje')">
                 <div class="icon-img">🌐</div>
-                <div class="icon-name">거제_카페추천웹.web</div>
+                <div class="icon-name">거제_카페추천웹</div>
             </div>
         </div>
 
+        <!-- 하단 독바 -->
         <div class="dock-container">
             <div class="dock">
                 <div class="dock-item" onclick="openWindow('window-profile')">👤</div>
@@ -181,6 +191,7 @@
         </div>
     </div>
 
+    <!-- 📑 내 정보 모달 -->
     <div id="window-profile" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-profile')"></div></div>
@@ -227,6 +238,7 @@
         </div>
     </div>
 
+    <!-- 📑 외도널서리 창 -->
     <div id="window-nursery" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-nursery')"></div></div>
@@ -238,13 +250,14 @@
             <div class="video-container">
                 <iframe width="315" height="380" src="https://www.youtube.com/embed/1mP2VsyTAmQ" title="외도널서리 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div class="video-stats">
-                    <div class="stat-item">👀 조회수 1,826회</div>
-                    <div class="stat-item">❤️ 좋아요 17개</div>
+                    <div class="stat-item">👀 조회수 3,421회</div>
+                    <div class="stat-item">❤️ 좋아요 142개</div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- 📑 온더선셋 창 -->
     <div id="window-sunset" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-sunset')"></div></div>
@@ -256,13 +269,14 @@
             <div class="video-container">
                 <iframe width="315" height="380" src="https://www.youtube.com/embed/Z3sUDTAkdiI" title="온더선셋 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div class="video-stats">
-                    <div class="stat-item">👀 조회수 150회</div>
+                    <div class="stat-item">👀 조회수 145회</div>
                     <div class="stat-item">❤️ 좋아요 2개</div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- 📑 ai 공모전 영상 창 -->
     <div id="window-contest" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-contest')"></div></div>
@@ -274,11 +288,14 @@
             <div class="video-container">
                 <iframe width="315" height="380" src="https://www.youtube.com/embed/32sBBYVR4oY" title="퀴즈노스 AI 공모전 영상" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div class="video-stats">
+                    <div class="stat-item">👀 조회수 1,826회</div>
+                    <div class="stat-item">❤️ 좋아요 17개</div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- 🛍️ 겐츠베이커리 멀티 페이지 뷰어 -->
     <div id="window-gentz" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-gentz')"></div></div>
