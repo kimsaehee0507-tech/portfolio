@@ -1,1 +1,230 @@
-<h1>세희의 포트폴리오 사이트</h1>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saehee's MacBook Portfolio</title>
+    <style>
+        /* 기본 리셋 및 바탕화면 설정 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); /* 맥북 기본 느낌 그라데이션 */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 1. 상단 메뉴바 (Mac Menu Bar) */
+        .menu-bar {
+            width: 100%;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #333;
+            position: absolute;
+            top: 0;
+            z-index: 9999;
+        }
+        .menu-left span, .menu-right span {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        /* 2. 하단 독바 (Mac Dock) */
+        .dock-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+        }
+        .dock {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: flex;
+            gap: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .dock-item {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .dock-item:hover {
+            transform: scale(1.2) translateY(-10px);
+        }
+
+        /* 3. 맥북 스타일 프로그램 창 (Modal Window) */
+        .window {
+            width: 600px;
+            height: 400px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        /* 창이 열렸을 때 클래스 */
+        .window.active {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* 창 상단 타이틀바 (빨강, 노랑, 초록 버튼) */
+        .title-bar {
+            height: 30px;
+            background: #f6f6f6;
+            border-bottom: 1px solid #d8d8d8;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            position: relative;
+        }
+        .buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .btn-close { background: #ff5f56; }
+        .btn-minimize { background: #ffbd2e; }
+        .btn-maximize { background: #27c93f; }
+        
+        .window-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* 창 내부 콘텐츠 영역 */
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 상단 메뉴바 -->
+    <div class="menu-bar">
+        <div class="menu-left">
+            <span style="font-weight: 700;"></span>
+            <span>Finder</span>
+            <span>파일</span>
+            <span>편집</span>
+            <span>보기</span>
+        </div>
+        <div class="menu-right">
+            <span>A-Fi</span>
+            <span>100%</span>
+            <span id="current-time">오후 5:25</span>
+        </div>
+    </div>
+
+    <!-- 하단 독바 (아이콘 클릭 시 해당 창이 열림) -->
+    <div class="dock-container">
+        <div class="dock">
+            <div class="dock-item" onclick="openWindow('about-window')">👤</div>
+            <div class="dock-item" onclick="openWindow('project-window')">🎬</div>
+            <div class="dock-item" onclick="openWindow('contact-window')">✉️</div>
+        </div>
+    </div>
+
+    <!-- 팝업 창 1: 자기소개 -->
+    <div id="about-window" class="window">
+        <div class="title-bar">
+            <div class="buttons">
+                <div class="btn btn-close" onclick="closeWindow('about-window')"></div>
+                <div class="btn btn-minimize"></div>
+                <div class="btn btn-maximize"></div>
+            </div>
+            <div class="window-title">About Me</div>
+        </div>
+        <div class="content">
+            <h2>안녕하세요, 세희의 포트폴리오입니다.</h2>
+            <p>여기에 자기소개글이나 기획 역량, 컨셉 등을 채워 넣으시면 됩니다!</p>
+        </div>
+    </div>
+
+    <!-- 팝업 창 2: 프로젝트 영상 리스트 -->
+    <div id="project-window" class="window">
+        <div class="title-bar">
+            <div class="buttons">
+                <div class="btn btn-close" onclick="closeWindow('project-window')"></div>
+                <div class="btn btn-minimize"></div>
+                <div class="btn btn-maximize"></div>
+            </div>
+            <div class="window-title">Projects</div>
+        </div>
+        <div class="content">
+            <h2>작업물 리스트</h2>
+            <p>영상 썸네일이나 포스터, 진행했던 프로젝트 링크를 넣어 구성해보세요.</p>
+        </div>
+    </div>
+
+    <!-- 팝업 창 3: 연락처 -->
+    <div id="contact-window" class="window">
+        <div class="title-bar">
+            <div class="buttons">
+                <div class="btn btn-close" onclick="closeWindow('contact-window')"></div>
+                <div class="btn btn-minimize"></div>
+                <div class="btn btn-maximize"></div>
+            </div>
+            <div class="window-title">Contact</div>
+        </div>
+        <div class="content">
+            <h2>Contact Me</h2>
+            <p>이메일: ksh... @ email.com</p>
+            <p>GitHub 주소나 SNS 링크를 연결해 보세요.</p>
+        </div>
+    </div>
+
+    <script>
+        // 창 열기 함수
+        function openWindow(id) {
+            // 모든 창을 맨 뒤로 보내고 선택한 창만 앞으로 가져오기 위해 z-index 조절 가능
+            document.getElementById(id).classList.add('active');
+        }
+
+        // 창 닫기 (빨간 버튼) 함수
+        function closeWindow(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+    </script>
+</body>
+</html>
