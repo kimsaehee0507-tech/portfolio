@@ -78,7 +78,7 @@
         /* 프로그램 모달 디자인 */
         .window {
             width: 680px; height: 540px; background: #fff; border-radius: 11px;
-            box-shadow: 0 25px 55px rgba(0,0,0,0.35); position: absolute; top: 50%; left: 50%;
+            box-shadow: 0 25px 55px rgba(0,0,0,0.355); position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%) scale(0); display: flex; flex-direction: column;
             overflow: hidden; z-index: 1000; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -100,7 +100,7 @@
         .email-link { color: #2563eb; text-decoration: none; font-weight: 500; }
         .video-container { display: flex; flex-direction: column; align-items: center; margin-top: 15px; background: #000; border-radius: 8px; overflow: hidden; padding: 10px 0;}
         
-        /* 📊 영상 하단 지표 레이아웃 */
+        /* 📊 영상 지표 패널 레이아웃 */
         .video-stats {
             width: 100%; max-width: 315px; display: flex; justify-content: space-around; 
             background: #1a1a1a; padding: 8px 12px; border-radius: 6px; margin-top: 8px;
@@ -224,7 +224,7 @@
         </div>
     </div>
 
-    <!-- 📑 외도널서리 창 (실제 데이터 세팅 완료) -->
+    <!-- 📑 외도널서리 창 -->
     <div id="window-nursery" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-nursery')"></div></div>
@@ -235,16 +235,15 @@
             <p>생성형 AI 비주얼을 연계 가공하여 이국적인 식물원 컨셉과 화사한 온실 무드를 밀도 높게 연출한 숏폼 콘텐츠입니다.</p>
             <div class="video-container">
                 <iframe width="315" height="380" src="https://www.youtube.com/embed/1mP2VsyTAmQ" title="외도널서리 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <!-- 📊 실제 쇼츠 지표 세팅 -->
                 <div class="video-stats">
-                    <div class="stat-item">👀 조회수 3,421회</div>
-                    <div class="stat-item">❤️ 좋아요 142개</div>
+                    <div class="stat-item">👀 조회수 1,826회</div>
+                    <div class="stat-item">❤️ 좋아요 17개</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 📑 온더선셋 창 (실제 데이터 세팅 완료) -->
+    <!-- 📑 온더선셋 창 -->
     <div id="window-sunset" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-sunset')"></div></div>
@@ -255,16 +254,15 @@
             <p>탁 트인 거제 오션 뷰의 시원하고 청량한 감성 포인트를 숏폼 스타일에 맞추어 연출한 숏폼 콘텐츠입니다.</p>
             <div class="video-container">
                 <iframe width="315" height="380" src="https://www.youtube.com/embed/Z3sUDTAkdiI" title="온더선셋 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <!-- 📊 실제 쇼츠 지표 세팅 -->
                 <div class="video-stats">
-                    <div class="stat-item">👀 조회수 4,115회</div>
-                    <div class="stat-item">❤️ 좋아요 189개</div>
+                    <div class="stat-item">👀 조회수 145회</div>
+                    <div class="stat-item">❤️ 좋아요 2개</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 🛍️ 겐츠베이커리 멀티 페이지 뷰어 (완벽 매칭 파일 주소 고정 완료) -->
+    <!-- 🛍️ 겐츠베이커리 멀티 페이지 뷰어 (현재 화면 좌측에 노출된 파일 이름과 100% 일치 매칭 완료) -->
     <div id="window-gentz" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-gentz')"></div></div>
@@ -280,10 +278,10 @@
                     <button class="pdf-btn" onclick="changePage(3)">3 페이지 (브레드 박스)</button>
                 </div>
 
-                <!-- 1페이지 -->
+                <!-- 1페이지 (keyring.png으로 정확하게 링크 매칭) -->
                 <div id="goods-p1" class="pdf-page active">
                     <div class="goods-img-box">
-                        <img src="./%EB%8B%A8%EB%A9%B4%20%ED%82%A4%EB%A7%81%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="단면 키링 이미지">
+                        <img src="./keyring.png" alt="단면 키링 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 1. 겐츠 시그니처 메뉴 '단면' 키링 & 마그넷 세트</h4>
@@ -293,10 +291,10 @@
                     </div>
                 </div>
 
-                <!-- 2페이지 -->
+                <!-- 2페이지 (board.png로 링크 매칭) -->
                 <div id="goods-p2" class="pdf-page">
                     <div class="goods-img-box">
-                        <img src="./%EC%9A%B0%EB%93%9C%20%EC%84%9C%EB%B9%9D%20%EB%B3%B4%EB%93%9C%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="우드 서빙 보드 이미지">
+                        <img src="./board.png" alt="우드 서빙 보드 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 2. 웨이브 우드 서빙 보드</h4>
@@ -306,10 +304,10 @@
                     </div>
                 </div>
 
-                <!-- 3페이지 -->
+                <!-- 3페이지 (box.png로 링크 매칭) -->
                 <div id="goods-p3" class="pdf-page">
                     <div class="goods-img-box">
-                        <img src="./%EC%A7%84%EA%B3%B5%20%EB%B8%8C%EB%A0%88%EB%93%9C%20%EB%B0%95%EC%8A%A4%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="진공 브레드 박스 이미지">
+                        <img src="./box.png" alt="진공 브레드 박스 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 3. 겐츠 '프레시 킵' 진공 브레드 박스</h4>
