@@ -8,53 +8,33 @@
         /* 기본 스타일 리셋 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            width: 100vw;
-            height: 100vh;
+            width: 100vw; height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow: hidden;
-            position: relative;
+            overflow: hidden; position: relative;
         }
 
         /* [1] 맥북 잠금 화면 (Lock Screen) */
         #lock-screen {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            color: white;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            z-index: 10000; transition: opacity 0.5s ease, transform 0.5s ease; color: white;
         }
-        #lock-screen.unlocked {
-            opacity: 0;
-            transform: scale(1.1);
-            pointer-events: none;
-        }
+        #lock-screen.unlocked { opacity: 0; transform: scale(1.1); pointer-events: none; }
         .profile-img {
             width: 100px; height: 100px; border-radius: 50%;
             background: rgba(255,255,255,0.2); backdrop-filter: blur(5px);
             margin-bottom: 15px; display: flex; align-items: center; justify-content: center;
             font-size: 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .user-name {
-            font-size: 22px; font-weight: 600; margin-bottom: 8px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-        }
-        .lock-hint {
-            font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 20px;
-            font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
+        .user-name { font-size: 22px; font-weight: 600; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
+        .lock-hint { font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 20px; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
         .password-container {
-            display: flex; align-items: center;
-            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);
+            display: flex; align-items: center; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);
             padding: 6px 12px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.25);
         }
         .password-container input {
-            background: none; border: none; outline: none; color: white;
-            padding: 3px; font-size: 14px; text-align: center; width: 130px;
+            background: none; border: none; outline: none; color: white; padding: 3px; font-size: 14px; text-align: center; width: 130px;
         }
         .password-container input::placeholder { color: rgba(255, 255, 255, 0.5); }
         .login-btn { background: none; border: none; color: white; cursor: pointer; font-size: 16px; margin-left: 5px; }
@@ -65,8 +45,6 @@
             background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
             position: relative; padding-top: 25px;
         }
-
-        /* 상단 메뉴바 */
         .menu-bar {
             width: 100%; height: 25px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(15px);
             display: flex; align-items: center; justify-content: space-between; padding: 0 15px;
@@ -75,13 +53,9 @@
         .menu-left span, .menu-right span { margin-right: 15px; cursor: pointer; }
 
         /* 바탕화면 왼쪽 세로 정렬 아이콘 그리드 */
-        .file-grid {
-            position: absolute; top: 55px; left: 25px; display: flex; flex-direction: column; gap: 25px;
-        }
+        .file-grid { position: absolute; top: 55px; left: 25px; display: flex; flex-direction: column; gap: 25px; }
         .desktop-icon { display: flex; flex-direction: column; align-items: center; width: 105px; cursor: pointer; text-align: center; }
-        .desktop-icon .icon-img {
-            font-size: 52px; margin-bottom: 6px; filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.25)); transition: transform 0.15s ease;
-        }
+        .desktop-icon .icon-img { font-size: 52px; margin-bottom: 6px; filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.25)); transition: transform 0.15s ease; }
         .desktop-icon:hover .icon-img { transform: scale(1.1); }
         .desktop-icon .icon-name {
             font-size: 11px; color: white; text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.9);
@@ -91,8 +65,7 @@
         /* 하단 독바 */
         .dock-container { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 999; }
         .dock {
-            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(25px);
-            padding: 10px 18px; border-radius: 22px; display: flex; gap: 18px;
+            background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(25px); padding: 10px 18px; border-radius: 22px; display: flex; gap: 18px;
             border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 12px 35px rgba(0,0,0,0.2);
         }
         .dock-item {
@@ -104,29 +77,21 @@
 
         /* 프로그램 모달 창 */
         .window {
-            width: 680px; height: 520px; background: #fff; border-radius: 11px;
+            width: 680px; height: 530px; background: #fff; border-radius: 11px;
             box-shadow: 0 25px 55px rgba(0,0,0,0.35); position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%) scale(0); display: flex; flex-direction: column;
             overflow: hidden; z-index: 1000; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .window.active { transform: translate(-50%, -50%) scale(1); }
-
-        /* 창 상단 타이틀바 */
-        .title-bar {
-            height: 32px; background: #ebedf2; border-bottom: 1px solid #d1d5db;
-            display: flex; align-items: center; padding: 0 12px; position: relative;
-        }
+        .title-bar { height: 32px; background: #ebedf2; border-bottom: 1px solid #d1d5db; display: flex; align-items: center; padding: 0 12px; position: relative; }
         .buttons { display: flex; gap: 8px; }
         .btn { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; }
         .btn-close { background: #ff5f56; }
         .btn-minimize { background: #ffbd2e; }
         .btn-maximize { background: #27c93f; }
-        .window-title {
-            position: absolute; left: 50%; transform: translateX(-50%);
-            font-size: 13px; color: #4b5563; font-weight: 600;
-        }
+        .window-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 13px; color: #4b5563; font-weight: 600; }
 
-        /* 내부 레이아웃 구조화 */
+        /* 내부 레이아웃 */
         .content { flex: 1; padding: 25px; overflow-y: auto; font-size: 14px; line-height: 1.7; color: #1f2937; }
         .content h3 { margin-bottom: 15px; color: #111827; border-bottom: 2px solid #f3f4f6; padding-bottom: 8px;}
         .info-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
@@ -134,21 +99,20 @@
         .info-table td.label { font-weight: 600; color: #4b5563; width: 100px; }
         .tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 500; margin-right: 4px; }
         .project-item { background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px; }
-        .project-item h4 { margin-bottom: 5px; color: #1f2937; }
-        .email-link, .web-btn { color: #2563eb; text-decoration: none; font-weight: 500; }
-        
-        /* 🎬 숏폼 영상 임베드 스타일 패널 */
-        .video-container {
-            display: flex; justify-content: center; margin-top: 15px; background: #000; border-radius: 8px; overflow: hidden;
-        }
-
-        /* 🌐 링크 버튼 */
+        .email-link { color: #2563eb; text-decoration: none; font-weight: 500; }
+        .video-container { display: flex; justify-content: center; margin-top: 15px; background: #000; border-radius: 8px; overflow: hidden; }
         .web-link-container { text-align: center; margin-top: 25px; }
-        .btn-visit {
-            display: inline-block; background: #2563eb; color: white; padding: 10px 24px; border-radius: 6px;
-            text-decoration: none; font-weight: 500; transition: background 0.2s;
-        }
-        .btn-visit:hover { background: #1d4ed8; }
+        .btn-visit { display: inline-block; background: #2563eb; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; }
+
+        /* 🛍️ 겐츠 굿즈 전용 멀티 페이지 슬라이더 뷰 스타일 */
+        .pdf-viewer { display: flex; flex-direction: column; height: 100%; }
+        .pdf-navigation { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; background: #f3f4f6; padding: 8px; border-radius: 6px; }
+        .pdf-btn { background: white; border: 1px solid #d1d5db; padding: 5px 15px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .pdf-btn.active { background: #2563eb; color: white; border-color: #2563eb; }
+        .pdf-page { display: none; }
+        .pdf-page.active { display: block; }
+        .goods-img-box { width: 100%; max-height: 200px; overflow: hidden; border-radius: 6px; margin-bottom: 12px; border: 1px solid #e5e7eb; }
+        .goods-img-box img { width: 100%; height: 100%; object-fit: cover; }
     </style>
 </head>
 <body>
@@ -166,7 +130,6 @@
 
     <!-- 🖥️ 메인 바탕화면 -->
     <div id="desktop">
-        <!-- 상단 메뉴바 -->
         <div class="menu-bar">
             <div class="menu-left">
                 <span style="font-weight: 700;"></span>
@@ -176,11 +139,11 @@
             </div>
             <div class="menu-right">
                 <span>Wi-Fi</span>
-                <span id="clock">오후 6:08</span>
+                <span id="clock">오후 6:14</span>
             </div>
         </div>
 
-        <!-- 📂 [왼쪽 배치] 프로젝트 4개 리스트 아이콘 -->
+        <!-- 바탕화면 왼쪽 아이콘들 -->
         <div class="file-grid">
             <div class="desktop-icon" onclick="openWindow('window-nursery')">
                 <div class="icon-img">🎬</div>
@@ -200,7 +163,7 @@
             </div>
         </div>
 
-        <!-- 📥 하단 독바 (내정보, 아카이브, 연락처 고정) -->
+        <!-- 하단 독바 -->
         <div class="dock-container">
             <div class="dock">
                 <div class="dock-item" onclick="openWindow('window-profile')">👤</div>
@@ -210,7 +173,7 @@
         </div>
     </div>
 
-    <!-- 📑 [독바 1] 내 정보 창 -->
+    <!-- 📑 [독바 1] 내 정보 -->
     <div id="window-profile" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-profile')"></div></div>
@@ -235,7 +198,7 @@
         </div>
     </div>
 
-    <!-- 📑 [독바 2] 통합 워크 아카이브 폴더 창 -->
+    <!-- 📑 [독바 2] Work_Archive 요약 목록 -->
     <div id="window-archive" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-archive')"></div></div>
@@ -243,17 +206,16 @@
         </div>
         <div class="content">
             <h3>📂 전체 프로젝트 요약 목록</h3>
-            <p style="margin-bottom: 15px;">바탕화면의 개별 아이콘을 직접 실행하시면 상세 작업 환경 및 링크를 확인할 수 있습니다.</p>
             <div class="project-item">
                 <p>• <strong>🎬 외도널서리 홍보 영상</strong>: 생성형 AI 연계 숏폼 비주얼 아카이브</p>
-                <p>• <strong>🎬 온더선셋 홍보 영상</strong>: 시네마틱 타임랩스 감성 마케팅 쇼츠</p>
-                <p>• <strong>🛍️ 겐츠베이커리 굿즈 기획</strong>: 시그니처 단면 굿즈, 우드보드, 브레드박스 등 3종 아이디어</p>
-                <p>• <strong>🌐 거제 카페 추천 웹사이트</strong>: 편리한 검색 인터페이스 큐레이션 플랫폼</p>
+                <p>• <strong>🎬 온더선셋 홍보 영상</strong>: 탁 트인 거제 바다 뷰를 담아낸 숏폼 트렌드 바이럴 영상</p>
+                <p>• <strong>🛍️ 겐츠베이커리 굿즈 기획</strong>: 단면 키링, 웨이브 우드 보드, 브레드 박스 멀티 페이지 기획</p>
+                <p>• <strong>🌐 거제 카페 추천 웹사이트</strong>: 카페 큐레이션 및 UI/UX 중심 반응형 포트폴리오</p>
             </div>
         </div>
     </div>
 
-    <!-- 📑 [독바 3] 컨택 창 -->
+    <!-- 📑 [독바 3] 연락처 -->
     <div id="window-contact" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-contact')"></div></div>
@@ -268,7 +230,7 @@
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 1] 외도널서리 영상 플레이어 모달 -->
+    <!-- 📑 [바탕화면 1] 외도널서리 -->
     <div id="window-nursery" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-nursery')"></div></div>
@@ -278,13 +240,12 @@
             <h3>🎬 거제 외도널서리 AI 홍보 영상</h3>
             <p>생성형 AI 비주얼을 연계 가공하여 이국적인 식물원 컨셉과 화사한 온실 무드를 밀도 높게 연출한 숏폼 콘텐츠입니다.</p>
             <div class="video-container">
-                <!-- 숏폼 맞춤 비율 임베드 세팅 -->
                 <iframe width="290" height="420" src="https://www.youtube.com/embed/1mP2VsyTAmQ" title="외도널서리 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 2] 온더선셋 영상 플레이어 모달 -->
+    <!-- 📑 [바탕화면 2] 온더선셋 (수정 완료: 일몰 제외하고 바다 뷰로 교체) -->
     <div id="window-sunset" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-sunset')"></div></div>
@@ -292,46 +253,73 @@
         </div>
         <div class="content">
             <h3>🎬 거제 온더선셋 AI 홍보 영상</h3>
-            <p>시네마틱한 오션뷰와 오렌지빛 일몰 타이밍의 감성을 트렌디한 바이럴 기획에 맞추어 담아낸 비주얼 쇼츠입니다.</p>
+            <p>탁 트인 거제 오션 뷰의 시원하고 청량한 감성 포인트를 캐치하여, 트렌디한 1분 미션 및 숏폼 무드 스타일에 맞추어 기획 및 제작 완료한 영상 결과물입니다.</p>
             <div class="video-container">
-                <iframe width="290" height="420" src="https://www.youtube.com/embed/Z3sUDTAkdiI" title="온더선셋 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></tbody></iframe>
+                <iframe width="290" height="420" src="https://www.youtube.com/embed/Z3sUDTAkdiI" title="온더선셋 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 3] 겐츠베이커리 굿즈 기획서 상세 (이미지 내용 데이터 완벽 반영) -->
+    <!-- 📑 [바탕화면 3] 겐츠베이커리 굿즈 (수정 완료: 1, 2, 3 페이지 버튼 클릭 기능 및 사진 반영) -->
     <div id="window-gentz" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-gentz')"></div></div>
             <div class="window-title">겐츠_굿즈기획.pdf</div>
         </div>
-        <div class="content">
-            <h3>🛍️ 겐츠베이커리 브랜딩 굿즈 디자인 기획 (3 아이디어)</h3>
+        <div class="content" style="padding: 15px 25px;">
+            <h3>🛍️ 겐츠베이커리 브랜딩 굿즈 디자인 기획</h3>
             
-            <div class="project-item">
-                <h4>💡 아이디어 1. 시그니처 메뉴 '단면' 키링 & 마그넷 세트</h4>
-                <p>• <strong>컨셉</strong>: 몽블랑, 타르트 등 대표 메뉴를 반으로 가른 미니어처 상세 재현</p>
-                <p>• <strong>디테일</strong>: 겉바속촉 리얼한 빵 질감 표현, 투명 에폭시 광택 및 코팅 마감</p>
-                <p>• <strong>패키징</strong>: 유선지 및 미니 우드 집게를 포함한 네이비 고급 패키지 구성</p>
-            </div>
+            <div class="pdf-viewer">
+                <!-- 페이지 상단 네비게이션 탭 바 -->
+                <div class="pdf-navigation">
+                    <button class="pdf-btn active" onclick="changePage(1)">1 페이지 (키링/마그넷)</button>
+                    <button class="pdf-btn" onclick="changePage(2)">2 페이지 (서빙 보드)</button>
+                    <button class="pdf-btn" onclick="changePage(3)">3 페이지 (브레드 박스)</button>
+                </div>
 
-            <div class="project-item">
-                <h4>💡 아이디어 2. 웨이브 우드 서빙 보드</h4>
-                <p>• <strong>컨셉</strong>: 부산의 파도와 빵 반죽의 비정형 곡선 라인을 모티브로 한 프리미어 오브제</p>
-                <p>• <strong>디테일</strong>: 티크/월넛 원목 오일 마감, 가로 가장자리에 빵가루를 모아주는 크럼 캐처 홈 설계</p>
-                <p>• <strong>아이덴티티</strong>: 우측 하단 겐츠 베이커리 로컬 헤리티지 레이저 각인 반영</p>
-            </div>
+                <!-- 1페이지 -->
+                <div id="goods-p1" class="pdf-page active">
+                    <div class="goods-img-box">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1000" alt="단면 키링 이미지">
+                    </div>
+                    <div class="project-item">
+                        <h4>💡 아이디어 1. 시그니처 메뉴 '단면' 키링 & 마그넷 세트</h4>
+                        <p style="font-size:13px; color:#555; margin-top:4px;">• <strong>컨셉</strong>: 몽블랑, 타르트 등 대표 메뉴를 반으로 가른 미니어처 상세 재현</p>
+                        <p style="font-size:13px; color:#555;">• <strong>디테일</strong>: 속이 꽉 찬 단면 디자인 재현, 고급 에폭시 광택 코팅 마감</p>
+                        <p style="font-size:13px; color:#555;">• <strong>패키지</strong>: 겐츠 유선지, 미니 집게를 조합한 고급 소장용 패키지 디자인</p>
+                    </div>
+                </div>
 
-            <div class="project-item">
-                <h4>💡 아이디어 3. '프레시 킵' 진공 브레드 박스</h4>
-                <p>• <strong>컨셉</strong>: 원터치 진공 밀폐 기술로 수분 증발을 차단하는 고기능성 빵 보관 팩</p>
-                <p>• <strong>디테일</strong>: BPA FREE 안전 소재, 매트한 블랙 질감 및 골드 로고 마감</p>
-                <p>• <strong>가이드</strong>: 뚜껑 안쪽에 소금빵, 크루아상, 바게트 등 최적의 보관 가이드라인 인쇄 디자인</p>
+                <!-- 2페이지 -->
+                <div id="goods-p2" class="pdf-page">
+                    <div class="goods-img-box">
+                        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=1000" alt="우드 서빙 보드 이미지">
+                    </div>
+                    <div class="project-item">
+                        <h4>💡 아이디어 2. 웨이브 우드 서빙 보드</h4>
+                        <p style="font-size:13px; color:#555; margin-top:4px;">• <strong>컨셉</strong>: 부산의 파도와 빵 반죽의 곡선 라인을 모티브로 한 프리미엄 오브제</p>
+                        <p style="font-size:13px; color:#555;">• <strong>디테일</strong>: 티크/월넛 고급 원목 마감, 빵가루를 모아주는 크럼 캐처 홈 설계</p>
+                        <p style="font-size:13px; color:#555;">• <strong>아이덴티티</strong>: 우측 하단 겐츠 베이커리 헤리티지 정교한 레이저 각인</p>
+                    </div>
+                </div>
+
+                <!-- 3페이지 -->
+                <div id="goods-p3" class="pdf-page">
+                    <div class="goods-img-box">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1000" alt="진공 브레드 박스 이미지">
+                    </div>
+                    <div class="project-item">
+                        <h4>💡 아이디어 3. '프레시 킵' 진공 브레드 박스</h4>
+                        <p style="font-size:13px; color:#555; margin-top:4px;">• <strong>컨셉</strong>: 원터치 진공 기술로 내부 공기를 제거해 프리미엄 빵의 신선함을 보존</p>
+                        <p style="font-size:13px; color:#555;">• <strong>디테일</strong>: BPA FREE 안심 소재, 매트한 질감 스틸 바디와 골드 로고 마감</p>
+                        <p style="font-size:13px; color:#555;">• <strong>가이드</strong>: 뚜껑 안쪽에 소금빵, 크루아상 최적 보관법 가이드 인쇄</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 📑 [바탕화면 4] 거제 카페 웹사이트 앱 링크 연동 모달 -->
+    <!-- 📑 [바탕화면 4] 거제 추천 웹 (수정 완료: 지도 제거하고 피드 레이아웃 강조) -->
     <div id="window-geoje" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-geoje')"></div></div>
@@ -339,10 +327,10 @@
         </div>
         <div class="content">
             <h3>🌐 거제 카페 큐레이션 및 추천 웹 플랫폼</h3>
-            <p>사용자 경험(UI/UX)과 서칭 편의를 위해 지도 및 카테고리 필터를 도입한 트렌디한 반응형 웹 큐레이션 서비스입니다.</p>
+            <p>사용자 동선 편의와 UI/UX 비주얼을 고려하여 카테고리 필터 시스템을 도입한 트렌디한 반응형 웹 큐레이션 서비스입니다.</p>
             <div class="project-item" style="margin-top: 15px;">
                 <p>• <strong>도메인 링크</strong>: <a href="https://geoje-cafe.aiapp.help" target="_blank" class="email-link">geoje-cafe.aiapp.help</a></p>
-                <p>• <strong>특징</strong>: 모바일 패널 최적화, 거제 핫플레이스(외도널서리, 온더선셋 등) 동선 연계 연출</p>
+                <p>• <strong>특징</strong>: 모바일 스크롤 환경 최적화 패널, 감각적인 피드 리스트 배치 및 매장 연계 연출</p>
             </div>
             <div class="web-link-container">
                 <a href="https://geoje-cafe.aiapp.help" target="_blank" class="btn-visit">🖥️ 웹사이트 바로가기</a>
@@ -355,6 +343,18 @@
         function checkEnter(e) { if (e.key === 'Enter') { unlock(); } }
         function openWindow(id) { document.getElementById(id).classList.add('active'); }
         function closeWindow(id) { document.getElementById(id).classList.remove('active'); }
+
+        // 🛍️ 겐츠 굿즈 멀티 페이지 컨트롤러 기능
+        function changePage(pageNum) {
+            // 모든 페이지 숨기기
+            document.querySelectorAll('.pdf-page').forEach(page => page.classList.remove('active'));
+            // 모든 버튼 비활성화
+            document.querySelectorAll('.pdf-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // 선택한 페이지와 버튼만 활성화
+            document.getElementById('goods-p' + pageNum).classList.add('active');
+            event.target.classList.add('active');
+        }
     </script>
 </body>
 </html>
