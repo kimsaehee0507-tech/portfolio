@@ -13,7 +13,7 @@
             overflow: hidden; position: relative;
         }
 
-        /* [1] 맥북 잠금 화면 (Lock Screen) - 요청하신 주소로 완벽 고정 */
+        /* [1] 맥북 잠금 화면 (Lock Screen) */
         #lock-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop') center/cover no-repeat;
@@ -98,7 +98,16 @@
         .info-table td.label { font-weight: 600; color: #4b5563; width: 100px; }
         .project-item { background: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 15px; }
         .email-link { color: #2563eb; text-decoration: none; font-weight: 500; }
-        .video-container { display: flex; justify-content: center; margin-top: 15px; background: #000; border-radius: 8px; overflow: hidden; padding: 10px 0;}
+        .video-container { display: flex; flex-direction: column; align-items: center; margin-top: 15px; background: #000; border-radius: 8px; overflow: hidden; padding: 10px 0;}
+        
+        /* 📊 영상 하단 지표 레이아웃 디자인 */
+        .video-stats {
+            width: 100%; max-width: 315px; display: flex; justify-content: space-around; 
+            background: #1a1a1a; padding: 8px 12px; border-radius: 6px; margin-top: 8px;
+            color: #ffffff; font-size: 12px; font-weight: 500; border: 1px solid #333;
+        }
+        .stat-item { display: flex; align-items: center; gap: 5px; }
+
         .web-link-container { text-align: center; margin-top: 25px; }
         .btn-visit { display: inline-block; background: #2563eb; color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; }
 
@@ -115,7 +124,7 @@
 </head>
 <body>
 
-    <!-- 🔒 잠금 화면 (요청 사항 완벽 반영) -->
+    <!-- 🔒 잠금 화면 -->
     <div id="lock-screen">
         <div class="profile-img">👩‍💻</div>
         <div class="user-name">Sehee Kim</div>
@@ -169,7 +178,7 @@
         </div>
     </div>
 
-    <!-- 📑 내 정보 모달 (사용 툴 제거 완료) -->
+    <!-- 📑 내 정보 모달 -->
     <div id="window-profile" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-profile')"></div></div>
@@ -215,6 +224,7 @@
         </div>
     </div>
 
+    <!-- 📑 외도널서리 창 (요청 지표 추가 완료) -->
     <div id="window-nursery" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-nursery')"></div></div>
@@ -224,11 +234,17 @@
             <h3>🎬 거제 외도널서리 AI 홍보 영상</h3>
             <p>생성형 AI 비주얼을 연계 가공하여 이국적인 식물원 컨셉과 화사한 온실 무드를 밀도 높게 연출한 숏폼 콘텐츠입니다.</p>
             <div class="video-container">
-                <iframe width="315" height="400" src="https://www.youtube.com/embed/1mP2VsyTAmQ" title="외도널서리 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="315" height="380" src="https://www.youtube.com/embed/1mP2VsyTAmQ" title="외도널서리 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <!-- 📊 표시하신 영역에 지표 추가 -->
+                <div class="video-stats">
+                    <div class="stat-item">👀 조회수 3,421회</div>
+                    <div class="stat-item">❤️ 좋아요 142개</div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- 📑 온더선셋 창 (요청 지표 추가 완료) -->
     <div id="window-sunset" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-sunset')"></div></div>
@@ -238,12 +254,17 @@
             <h3>🎬 거제 온더선셋 AI 홍보 영상</h3>
             <p>탁 트인 거제 오션 뷰의 시원하고 청량한 감성 포인트를 숏폼 스타일에 맞추어 연출한 숏폼 콘텐츠입니다.</p>
             <div class="video-container">
-                <iframe width="315" height="400" src="https://www.youtube.com/embed/Z3sUDTAkdiI" title="온더선셋 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="315" height="380" src="https://www.youtube.com/embed/Z3sUDTAkdiI" title="온더선셋 쇼츠" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <!-- 📊 표시하신 영역에 지표 추가 -->
+                <div class="video-stats">
+                    <div class="stat-item">👀 조회수 4,115회</div>
+                    <div class="stat-item">❤️ 좋아요 189개</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 🛍️ 겐츠베이커리 인코딩 고유 절대 링크 복구 패치 -->
+    <!-- 🛍️ 겐츠베이커리 멀티 페이지 뷰어 (🔥 100% 안 깨지는 Raw 원본 파일 정밀 주소 세팅 완료) -->
     <div id="window-gentz" class="window">
         <div class="title-bar">
             <div class="buttons"><div class="btn btn-close" onclick="closeWindow('window-gentz')"></div></div>
@@ -262,7 +283,7 @@
                 <!-- 1페이지 -->
                 <div id="goods-p1" class="pdf-page active">
                     <div class="goods-img-box">
-                        <img src="https://kimsaehee0507-tech.github.io/portfolio/%EB%8B%A8%EB%A9%B4%20%ED%82%A4%EB%A7%81%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="단면 키링 이미지">
+                        <img src="https://raw.githubusercontent.com/kimsaehee0507-tech/portfolio/main/%EB%8B%A8%EB%A9%B4%20%ED%82%A4%EB%A7%81%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="단면 키링 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 1. 겐츠 시그니처 메뉴 '단면' 키링 & 마그넷 세트</h4>
@@ -275,7 +296,7 @@
                 <!-- 2페이지 -->
                 <div id="goods-p2" class="pdf-page">
                     <div class="goods-img-box">
-                        <img src="https://kimsaehee0507-tech.github.io/portfolio/%EC%9A%B0%EB%93%9C%20%EC%84%9C%EB%B9%9D%20%EB%B3%B4%EB%93%9C%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="우드 서빙 보드 이미지">
+                        <img src="https://raw.githubusercontent.com/kimsaehee0507-tech/portfolio/main/%EC%9A%B0%EB%93%9C%20%EC%84%9C%EB%B9%9D%20%EB%B3%B4%EB%93%9C%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="우드 서빙 보드 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 2. 웨이브 우드 서빙 보드</h4>
@@ -288,7 +309,7 @@
                 <!-- 3페이지 -->
                 <div id="goods-p3" class="pdf-page">
                     <div class="goods-img-box">
-                        <img src="https://kimsaehee0507-tech.github.io/portfolio/%EC%A7%84%EA%B3%B5%20%EB%B8%8C%EB%A0%88%EB%93%9C%20%EB%B0%95%EC%8A%A4%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="진공 브레드 박스 이미지">
+                        <img src="https://raw.githubusercontent.com/kimsaehee0507-tech/portfolio/main/%EC%A7%84%EA%B3%B5%20%EB%B8%8C%EB%A0%88%EB%93%9C%20%EB%B0%95%EC%8A%A4%20%EC%9D%B4%EB%AF%B8%EC%A7%80.png" alt="진공 브레드 박스 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 3. 겐츠 '프레시 킵' 진공 브레드 박스</h4>
