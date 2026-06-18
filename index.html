@@ -119,9 +119,9 @@
         .pdf-page { display: none; }
         .pdf-page.active { display: block; }
         
-        /* 🖼️ 이미지 잘림 방지 스타일 적용 (contain으로 원본 크기 유지) */
-        .goods-img-box { width: 100%; height: 230px; overflow: hidden; border-radius: 6px; margin-bottom: 12px; border: 1px solid #e5e7eb; display: flex; justify-content: center; align-items: center; background: #fdfdfd; }
-        .goods-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        /* 🔍 요청대로 기획서가 확대되어 크게 보이도록 가로 세로 비율 및 스크롤 패치 */
+        .goods-img-box { width: 100%; overflow-x: hidden; overflow-y: visible; border-radius: 6px; margin-bottom: 12px; border: 1px solid #e5e7eb; display: flex; justify-content: center; align-items: flex-start; background: #fdfdfd; }
+        .goods-img-box img { width: 100%; height: auto; object-fit: contain; display: block; }
     </style>
 </head>
 <body>
@@ -276,7 +276,7 @@
 
                 <div id="goods-p1" class="pdf-page active">
                     <div class="goods-img-box">
-                        <img src="./keyring.PNG" alt="단면 키링 이미지">
+                        <img src="./keyring.png" alt="단면 키링 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 1. 겐츠 시그니처 메뉴 '단면' 키링 & 마그넷 세트</h4>
@@ -288,7 +288,7 @@
 
                 <div id="goods-p2" class="pdf-page">
                     <div class="goods-img-box">
-                        <img src="./board.PNG" alt="우드 서빙 보드 이미지">
+                        <img src="./board.png" alt="우드 서빙 보드 이미지">
                     </div>
                     <div class="project-item">
                         <h4>💡 아이디어 2. 웨이브 우드 서빙 보드</h4>
